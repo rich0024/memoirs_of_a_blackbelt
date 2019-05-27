@@ -1,4 +1,21 @@
-source "https://rubygems.org"
+source 'http://rubygems.org'
 
-# Specify your gem's dependencies in memoirs_of_a_blackbelt.gemspec
-gemspec
+gem 'sinatra'
+gem 'activerecord', '~> 4.2', '>= 4.2.6', :require => 'active_record'
+gem 'sinatra-activerecord', :require => 'sinatra/activerecord'
+gem 'rake'
+gem 'require_all'
+gem 'sqlite3', '~> 1.3.6' #need 1.3.6 to work with this version of activerecord
+gem 'thin'
+gem 'shotgun'
+gem 'pry'
+gem 'bcrypt'
+gem "tux"
+gem 'sinatra-flash'
+
+group :test do
+  gem 'rspec'
+  gem 'capybara'
+  gem 'rack-test'
+  gem 'database_cleaner', git: 'https://github.com/bmabey/database_cleaner.git'
+end
