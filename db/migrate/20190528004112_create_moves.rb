@@ -4,6 +4,7 @@ class CreateMoves < ActiveRecord::Migration
       t.string :start_position
       t.string :type_of_move
       t.string :description
+      t.integer :user_id
     end
   end
 end

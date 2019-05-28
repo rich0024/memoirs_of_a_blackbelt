@@ -11,17 +11,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190528011831) do
+ActiveRecord::Schema.define(version: 20190528004112) do
 
   create_table "moves", force: :cascade do |t|
-    t.string "start_position"
-    t.string "type_of_move"
-    t.string "description"
-  end
-
-  create_table "posts", force: :cascade do |t|
-    t.string  "title"
-    t.text    "content"
+    t.string  "start_position"
+    t.string  "type_of_move"
+    t.string  "description"
     t.integer "user_id"
   end
 

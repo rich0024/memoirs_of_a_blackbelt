@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  enable :sessions
 
   get "/signup" do
       erb :"/sessions/signup.html"
