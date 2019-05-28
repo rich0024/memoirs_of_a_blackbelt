@@ -7,6 +7,5 @@ end
 use Rack::MethodOverride
 
 use MovesController
-use SessionsController
 use UsersController
 run ApplicationController
