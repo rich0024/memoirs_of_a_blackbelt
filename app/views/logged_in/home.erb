@@ -20,7 +20,7 @@ tr:nth-child(even) {
 <table>
     <thead>
         <tr>
-            <th colspan="1">Move Number</th>
+            <th colspan="1"> </th>
             <th colspan="1">Start Position</th>
             <th colspan="1">Type of Move</th>
             <th colspan="1">Description</th>
@@ -29,7 +29,7 @@ tr:nth-child(even) {
     <tbody>
         <% current_user.moves.each do |move| %>
             <tr>
-                <td><a href="/moves/<%= move.id %>"><%= move.id %></a></td>
+                <td><a href="/moves/<%= move.id %>">View</a></td>
                 <td><%= move.start_position.capitalize %></td>
                 <td><%= move.type_of_move.capitalize %></td>
                 <td><%= move.description.capitalize %></td>

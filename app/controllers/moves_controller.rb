@@ -24,14 +24,30 @@ class MovesController < ApplicationController
 
   get '/moves/:id' do
     @move = Move.find_by(:id => params[:id])
-    erb :'/moves/view'
+    erb :'moves/view'
   end
 
-  get "moves/edit" do
+  get '/moves/:id/edit' do  #load edit form
+    @move = Move.find_by_id(params[:id])
+    erb :'moves/edit'
+  end
+
+  patch '/articles/:id' do #edit action
+    @move = Move.find_by_id(params[:id])
+    @move.start_position = params[:start_position]
+    @move.type_of_move = params[:type_of_move]
+    @move.description = params[:description]
+    @move.save
+    redirect to "/moves/#{@move.id}"
+  end
+
+  delete '/moves/:id/delete' do
     if !logged_in?
       redirect "/login"
     else
-      erb :'moves/edit'
+      @move = Move.find_by_id(params[:id])
+      @move.delete
+      redirect to '/home'
     end
   end
 

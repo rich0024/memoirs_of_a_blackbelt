@@ -20,3 +20,10 @@ tr:nth-child(even) {
   <td><%= @move.type_of_move.capitalize %></td>
   <td><%= @move.description.capitalize %></td>
 </table>
+<p></p>
+<a href="/moves/<%=@move.id%>/edit"><button type="button">edit move</button></a>
+<p></p>
+<form action="/moves/<%= @move.id %>/delete" method="post">
+  <input id="hidden" type="hidden" name="_method" value="delete">
+  <input type="submit" value="delete">
+</form>
