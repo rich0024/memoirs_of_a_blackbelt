@@ -32,7 +32,7 @@ class MovesController < ApplicationController
     erb :'moves/edit'
   end
 
-  patch '/articles/:id' do #edit action
+  patch '/moves/:id' do #edit action
     @move = Move.find_by_id(params[:id])
     @move.start_position = params[:start_position]
     @move.type_of_move = params[:type_of_move]
