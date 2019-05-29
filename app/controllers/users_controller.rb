@@ -13,7 +13,7 @@ class UsersController < ApplicationController
     user = User.new(:username => params[:username], :email => params[:email], :password => params[:password])
       if user.save
         session[:user_id] = user.id
-        redirect "logged_in/home"
+        redirect "/home"
       else
         redirect "/signup0"
       end
@@ -24,15 +24,15 @@ class UsersController < ApplicationController
     if !logged_in?
       erb :'sessions/login.html'
     else
-      redirect "logged_in/home"
+      redirect to "/home"
     end
   end
 
-  post '/login' do
+  post '/home' do
     user = User.find_by(:email => params[:email])
     if user && user.authenticate(params[:password])
       session[:user_id] = user.id
-      redirect "logged_in/home"
+      redirect "/home"
     else
       redirect to '/signup'
     end

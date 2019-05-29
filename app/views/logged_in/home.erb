@@ -1,1 +1,41 @@
-<h1>Welcome <%= current_user.username %></h1>
+<style>
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+</style>
+<h1>Welcome <%= current_user.username.capitalize %></h1>
+<h2>Move list</h2>
+<table>
+    <thead>
+        <tr>
+            <th colspan="1">Move Number</th>
+            <th colspan="1">Start Position</th>
+            <th colspan="1">Type of Move</th>
+            <th colspan="1">Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        <% current_user.moves.each do |move| %>
+            <tr>
+                <td><a href="/moves/<%= move.id %>"><%= move.id %></a></td>
+                <td><%= move.start_position.capitalize %></td>
+                <td><%= move.type_of_move.capitalize %></td>
+                <td><%= move.description.capitalize %></td>
+            </tr>
+        <% end %>
+    </tbody>
+</table>
+<a href="/moves/new"><button type="button">Got a New Move!</button></a>
+<a href="/logout"><button type="button">Logout</button></a>
