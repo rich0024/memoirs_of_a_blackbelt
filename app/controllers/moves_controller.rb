@@ -24,12 +24,20 @@ class MovesController < ApplicationController
 
   get '/moves/:id' do
     @move = Move.find_by(:id => params[:id])
-    erb :'moves/view'
+    if !logged_in? || !correct_user?
+      redirect "/login"
+    else
+      erb :'moves/view'
+    end
   end
 
   get '/moves/:id/edit' do  #load edit form
     @move = Move.find_by_id(params[:id])
-    erb :'moves/edit'
+    if !logged_in? || !correct_user?
+      redirect "/login"
+    else
+      erb :'moves/edit'
+    end
   end
 
   patch '/moves/:id' do #edit action
@@ -42,10 +50,10 @@ class MovesController < ApplicationController
   end
 
   delete '/moves/:id/delete' do
-    if !logged_in?
+    @move = Move.find_by_id(params[:id])
+    if !logged_in? || !correct_user?
       redirect "/login"
     else
-      @move = Move.find_by_id(params[:id])
       @move.delete
       redirect to '/home'
     end

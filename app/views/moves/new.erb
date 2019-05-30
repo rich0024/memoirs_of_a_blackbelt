@@ -2,13 +2,20 @@
 
 <form action="/moves/new" method="POST">
   <label> Start Position </label>
+  <p></p>
   <input type="text" name="start_position"> </br>
 
   <label> Type of Move </label>
+  <p></p>
   <input type="text" name="type_of_move"> </br>
 
   <label> Description </label>
-  <input type="text" name="description"> </br>
+  <p></p>
+  <textarea rows = "5" cols = "50" name = "description">
+  </textarea>
 
   <input type="submit" value="Create">
 </form>
+
+<a href="/logout"><button type="button">Logout</button></a>
+<a href="/home"><button type="button">Home</button></a>
