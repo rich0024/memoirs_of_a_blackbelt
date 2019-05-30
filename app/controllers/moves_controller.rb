@@ -32,7 +32,7 @@ class MovesController < ApplicationController
   end
 
   get '/moves/:id/edit' do  #load edit form
-    @move = Move.find_by_id(params[:id])
+    @move = Move.find_by(:id => params[:id])
     if !logged_in? || !correct_user?
       redirect "/login"
     else
@@ -41,7 +41,7 @@ class MovesController < ApplicationController
   end
 
   patch '/moves/:id' do #edit action
-    @move = Move.find_by_id(params[:id])
+    @move = Move.find_by(:id => params[:id])
     @move.start_position = params[:start_position]
     @move.type_of_move = params[:type_of_move]
     @move.description = params[:description]
@@ -50,7 +50,7 @@ class MovesController < ApplicationController
   end
 
   delete '/moves/:id/delete' do
-    @move = Move.find_by_id(params[:id])
+    @move = Move.find_by(:id => params[:id])
     if !logged_in? || !correct_user?
       redirect "/login"
     else

@@ -1,5 +1,4 @@
 class UsersController < ApplicationController
-  enable :sessions
 
   get "/signup" do
       erb :"/sessions/signup.html"
@@ -37,7 +36,7 @@ class UsersController < ApplicationController
     end
   end
 
-  post '/home' do
+  post '/login' do
     user = User.find_by(:email => params[:email])
     if user && user.authenticate(params[:password])
       session[:user_id] = user.id
