@@ -1,5 +1,18 @@
 <h1>NEW MOVE!</h1>
 
+
+<% if @move && @move.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= @move.errors.count %> error(s) prohibited this move from being saved:</h2>
+
+    <ul>
+    <% @move.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
+
 <form action="/moves/new" method="POST">
   <label> Start Position </label>
   <p></p>

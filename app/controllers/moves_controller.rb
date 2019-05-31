@@ -18,8 +18,11 @@ class MovesController < ApplicationController
 
   post "/moves/new" do
     @move = Move.new(start_position: params[:start_position], type_of_move: params[:type_of_move], description: params[:description], user_id: current_user.id)
-    @move.save
-    redirect "/home"
+    if @move.save
+      redirect "/home"
+    else
+      erb :'moves/new'
+    end
   end
 
   get '/moves/:id' do
@@ -45,8 +48,11 @@ class MovesController < ApplicationController
     @move.start_position = params[:start_position]
     @move.type_of_move = params[:type_of_move]
     @move.description = params[:description]
-    @move.save
-    redirect to "/moves/#{@move.id}"
+    if @move.save
+      redirect to "/moves/#{@move.id}"
+    else
+      erb :'moves/edit'
+    end
   end
 
   delete '/moves/:id/delete' do

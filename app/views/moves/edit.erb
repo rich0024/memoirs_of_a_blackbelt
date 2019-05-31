@@ -1,16 +1,28 @@
+<% if @move && @move.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= @move.errors.count %> error(s) prohibited this move from being saved:</h2>
+
+    <ul>
+    <% @move.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
+
 <form action="/moves/<%= @move.id %>" method="post">
   <input id="hidden" type="hidden" name="_method" value="patch">
     <label> Start Position </label>
     <p></p>
-    <input type="text" name="start_position"> </br>
+    <input type="text" name="start_position" value="<%=@move.start_position%>"> </br>
 
     <label> Type of Move </label>
     <p></p>
-    <input type="text" name="type_of_move"> </br>
+    <input type="text" name="type_of_move" value="<%=@move.type_of_move%>"/> </br>
 
     <label> Description </label>
     <p></p>
-    <textarea rows = "5" cols = "50" name = "description">
+    <textarea rows = "5" cols = "50" name = "description"> <%=@move.description%>
     </textarea>
 
     <input type="submit" value="Create">
